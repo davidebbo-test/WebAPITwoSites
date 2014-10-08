@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>webapifoo</id>
-    <title>Web API sample</title>
-    <version>1.0.0</version>
+    <id>UpperCaser</id>
+    <title>Upper Caser service</title>
+    <version>1.0.1</version>
     <authors>David Ebbo</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <projectUrl>https://github.com/davidebbo-test/WebAPIFoo</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A trivial WebAPI app</description>
+    <description>Web API service that upper cases a string</description>
     <tags>WebAPI sample</tags>
   </metadata>
   <files>
