@@ -2,17 +2,17 @@
 <package >
   <metadata>
     <id>UpperCaser</id>
-    <title>Upper Caser service</title>
+    <title>String doubler service</title>
     <version>1.0.1</version>
     <authors>David Ebbo</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <projectUrl>https://github.com/davidebbo-test/WebAPIFoo</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Web API service that upper cases a string</description>
+    <description>Web API service that calls another service and doubles the returned string</description>
     <tags>WebAPI sample</tags>
   </metadata>
   <files>
-    <file src="Artifacts\**\*.*" target="content" />
-    <file src="applicationHost.xdt" target="content" />
+    <file src="Artifacts\UpperCaser\**\*.*" target="content" />
+    <file src="UpperCaser\applicationHost.xdt" target="content" />
   </files>
 </package>
