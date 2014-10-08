@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,7 +17,10 @@ namespace WebAPIFoo.Controllers
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:53753/");
+
+                string upperCaseServiceUri = ConfigurationManager.AppSettings["UpperCaseServiceUri"];
+
+                client.BaseAddress = new Uri(upperCaseServiceUri);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
