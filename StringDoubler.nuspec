@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>UpperCaser</id>
+    <id>StringDoubler</id>
     <title>String doubler service</title>
     <version>1.0.1</version>
     <authors>David Ebbo</authors>
