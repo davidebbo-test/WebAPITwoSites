@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace WebAPIFoo.Controllers
@@ -24,10 +25,23 @@ namespace WebAPIFoo.Controllers
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.GetAsync("/api/upper/" + id);
+                string user = ConfigurationManager.AppSettings["UpperCaseServiceUser"];
+                string password = ConfigurationManager.AppSettings["UpperCaseServicePassword"];
+
+                if (!String.IsNullOrWhiteSpace(user))
+                {
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue(
+                            "Basic",
+                            Convert.ToBase64String(
+                                System.Text.ASCIIEncoding.ASCII.GetBytes(
+                                    string.Format("{0}:{1}", user, password))));
+                }
+
+                HttpResponseMessage response = await client.GetAsync("api/upper/" + id);
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new HttpResponseException(response);
+                    throw new HttpException(500, response.ToString());
                 }
 
                 id = await response.Content.ReadAsAsync<string>();
