@@ -12,7 +12,7 @@
     <tags>WebAPI sample</tags>
   </metadata>
   <files>
-    <file src="Artifacts\UpperCaser\**\*.*" target="content" />
-    <file src="UpperCaser\applicationHost.xdt" target="content" />
+    <file src="Artifacts\StringDoubler\**\*.*" target="content" />
+    <file src="StringDoubler\applicationHost.xdt" target="content" />
   </files>
 </package>
