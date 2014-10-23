@@ -18,24 +18,20 @@ namespace WebAPIFoo.Controllers
         {
             using (var client = new HttpClient())
             {
-
                 string upperCaseServiceUri = ConfigurationManager.AppSettings["UpperCaseServiceUri"];
 
                 client.BaseAddress = new Uri(upperCaseServiceUri);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                string user = ConfigurationManager.AppSettings["UpperCaseServiceUser"];
-                string password = ConfigurationManager.AppSettings["UpperCaseServicePassword"];
-
-                if (!String.IsNullOrWhiteSpace(user))
+                if (!String.IsNullOrWhiteSpace(client.BaseAddress.UserInfo))
                 {
                     client.DefaultRequestHeaders.Authorization =
                         new AuthenticationHeaderValue(
                             "Basic",
                             Convert.ToBase64String(
                                 System.Text.ASCIIEncoding.ASCII.GetBytes(
-                                    string.Format("{0}:{1}", user, password))));
+                                    client.BaseAddress.UserInfo)));
                 }
 
                 HttpResponseMessage response = await client.GetAsync("api/upper/" + id);
